@@ -87,7 +87,7 @@ export const welcomeData:WelcomeData[] = [
         title: 'useDialog',
         type: 'boolean',
         default: 'true',
-        text: '',
+        text: 'Toggle rendering the dialog (modal). Useful when portaling into another DOM node',
         href: ''
     },
     {
@@ -137,6 +137,62 @@ export const welcomeData:WelcomeData[] = [
         icon: 'Webhook',
         title: 'useSrch',
         text: 'Access and update internal state with helper methods provided in the `useSrch` hook',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.value',
+        type: 'string',
+        text: 'The current state of the search input in the window or search-bar',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.setValue',
+        type: 'string',
+        text: 'Set the state of the search input. Performs search on change.',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.toggleWindow',
+        type: '(open?: boolean) => void',
+        text: 'Toggle or set the isWindowOpen state',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.setSearchable',
+        type: '(data: any[]) => void',
+        text: 'Set a new collection of searchable data. Useful for async loaded docs',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.results',
+        type: 'FuseResult<T>[]',
+        text: 'Array of search results. Limited by config.resultsLength',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.groupBy',
+        type: 'FuseResult<T>[]',
+        text: 'Array of search results. Limited by config.resultsLength',
+        href: '/use-srch#getting-started'
+    },
+    {
+        section: 'Hooks',
+        icon: 'Webhook',
+        title: 'useSrch.groupBy',
+        type: '(groupBy: string) => void',
+        text: 'Set the new grouping behavior. Updates the rendered results.',
         href: '/use-srch#getting-started'
     },
 ]

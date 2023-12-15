@@ -86,45 +86,6 @@ const srchCtx = createContext<BaseCtx<any>>({
 });
 
 
-// function findValueLike(item:any, like:string[]) {
-// try{
-//     // if(!like.includes('company')) return
-//     log(`findValueLike |`, {
-//         item, like
-//     })
-
-//     // check each like string for actual keys from allKeys
-//     // get the fuseResults from each search
-//     let res = like.flatMap(l => {
-//         let srch = keyFuse.search(l)
-//         log(`findValueLike | 0:`, l, srch)
-
-//         return srch
-//     })
-//     log(`findValueLike | 1:`, like, res)
-    
-//     // .flat()
-//     res = res.sort((a, b) => a && b && a.score! > b.score! ? 1 : 0)
-//     log(`findValueLike | 2:`, like, res)
-//     // .sort((a, b) => a && b && a.item.length! - b.item.length! ? 1 : 0)
-//     // [0].item
-//     let keyString = res[0]?.item ?? ''
-//     log(`findValueLike | 3:`, like, keyString)
-    
-//     let foundValue = _.get(item, keyString)
-//     log(`findValueLike | 4:`, like, foundValue)
-//     // return _.get(item,  res)
-//     if(typeof foundValue == 'string'){
-//         return foundValue
-//     }else{
-//         return null
-//     }
-// }catch(err){
-//     log(`Error finding value:`, err)
-//     return null
-// }
-// }
-
 
 type BaseRecord = Record<string| number | symbol, any>
 export type ClassNames = {
@@ -163,12 +124,19 @@ export const useSrch = () => {
     mergeCtx({ searchable: data ?? [] });
   };
 
+  const setGroupBy = (groupBy:string) => {
+    if(typeof groupBy === 'string' && groupBy.length){
+      mergeCtx({ groupBy })
+    }
+  }
+
   return {
     value: ctx.searchValue,
     results: ctx.searchResults,
     groupedResults: ctx.groupedResults,
     groupBy: ctx.groupBy,
     isWindowOpen: ctx.isWindowOpen,
+    setGroupBy,
     setValue,
     toggleWindow,
     setSearchable,
@@ -178,6 +146,15 @@ export const useSrch = () => {
     }
   };
 };
+
+/*
+TODO - consider removing recommendation array: the user can customize this with NoResultsComponent
+TODO - find a way to use synonyms or multiple names for a key with fuse: i think this is supported with searchKeys={FuseOptionKey[] = [{ name: ['syn','onyms'] }] }
+TODO - rethink state management approach: parse and set props in context.
+TODO - consider using multiple providers and contexts for this: state updates are happening too frequently with no diff support
+
+*/
+
 
 //! ========================================================================================================================
 export const SrchProvider = <T extends BaseRecord>({
@@ -233,7 +210,13 @@ export const SrchProvider = <T extends BaseRecord>({
   classNames?: ClassNames;
 }) => {
    //===========================================
-  const [ctx, setCtx] = useState<SrchCtx<T>>(DEFAULT_CONTEXT);
+  const [ctx, setCtx] = useState<SrchCtx<T>>({
+    ...DEFAULT_CONTEXT,
+    groupBy: groupBy ?? null,
+    searchable,
+    recommended,
+    searchKeys,
+  });
   const fuseRef = useRef<null | Fuse<T>>(null);
   const keyFuseRef = useRef<null | Fuse<string>>(null);
   const autocompleteFuseRef = useRef<null | Fuse<string>>(null);
@@ -336,7 +319,10 @@ export const SrchProvider = <T extends BaseRecord>({
     log(`updating prob keys:`, probKeys)
     
 
-    mergeCtx({ fuseConfig: { ...ctx.fuseConfig, keys: fuseKeys } });
+    mergeCtx({ 
+      groupBy: groupBy,
+      fuseConfig: { ...ctx.fuseConfig, keys: fuseKeys }
+     });
 
     keyFuseRef.current = new Fuse(probKeys, {
         includeScore: true,
@@ -378,7 +364,7 @@ export const SrchProvider = <T extends BaseRecord>({
         return
     }
     mergeCtx({ searchable: searchable });
-  }, [searchable]);
+  }, [searchable, groupBy]);
 
   
  
@@ -456,10 +442,7 @@ export const SrchProvider = <T extends BaseRecord>({
       }
 
 
-      
-      {/* <pre className="text-gray-700 dark:text-gray-200 text-xs ">
-            {JSON.stringify(ctx, null, 2)}
-        </pre> */}
+
     </srchCtx.Provider>
   );
 };

@@ -3,9 +3,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
-import { CopyIcon, ExternalLink, GithubIcon, HeartHandshake, HeartIcon, ReplyIcon } from "lucide-react";
+import { CopyIcon, ExternalLink, GithubIcon, Heart, HeartHandshake, HeartIcon, ReplyIcon } from "lucide-react";
 import Link from "next/link";
 import dynamic from 'next/dynamic'
+import { cn } from "@/lib/utils";
 
 const CodeBlock = dynamic(() => import('@/components/code-block'), {
   loading: () => <p>Loading codeblock...</p>,
@@ -14,46 +15,43 @@ const CodeBlock = dynamic(() => import('@/components/code-block'), {
 const AppSearch = dynamic(() => import('@/components/AppSearch'), {
   ssr: false,
   loading: () => <div className="border border-gray-100 dark:border-gray-800 overflow-hidden w-full h-[395px] bg-white dark:bg-gray-950 flex flex-col text-gray-500 rounded-xl">
-    <Skeleton className="w-full h-10 bg-gray-200 dark:bg-gray-800" />
-    <div className="flex flex-col p-2 gap-3 min-h-[20rem] max-h-[20rem] overflow-hidden">
+    {/* <Skeleton className="w-full h-10 bg-gray-200 dark:bg-gray-800" /> */}
+    <div className="h-11 flex p-3 items-center gap-3 border-b border-gray-500/20">
+      <Skeleton className="w-4 h-4 bg-gray-200 dark:bg-gray-800 rounded-full" />
+      <Skeleton className="w-[14ch] h-4 bg-gray-200 dark:bg-gray-800 rounded" />
+    </div>
+    <div className="flex flex-col p-2 gap-3 min-h-[20.8rem] max-h-[20.8rem] overflow-hidden">
+
+
+      <div className="w-full flex items-center justify-center">
+        <Skeleton className="w-[20ch] h-16 my-8 bg-gray-200 dark:bg-gray-800 rounded-xl" />
+      </div>
 
       <Skeleton className="w-[12ch] h-3 bg-gray-100  dark:bg-gray-800 rounded" />
       {Array(3).fill(1).map((n, i) =>
-        <div key={i} className="w-full flex gap-2">
-          <Skeleton className="h-10 w-10  bg-gray-200 dark:bg-gray-700 rounded" />
+        <div key={i} className="w-full flex gap-1">
+          <Skeleton className="h-8 w-8  bg-gray-200 dark:bg-gray-700 rounded" />
           <div className="flex flex-col w-full justify-between">
-            <Skeleton className="h-4 w-[12ch] bg-gray-200  dark:bg-gray-700 rounded" />
-            <Skeleton className="h-4 bg-gray-100  dark:bg-gray-800 rounded" />
-          </div>
-        </div>
-      )}
-
-      <Skeleton className="w-[12ch] h-3 bg-gray-100  dark:bg-gray-800 rounded" />
-      {Array(2).fill(1).map((n, i) =>
-        <div key={i} className="w-full flex gap-2">
-          <Skeleton className="h-10 w-10  bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="flex flex-col w-full justify-between">
-            <Skeleton className="h-4 w-[12ch] bg-gray-200  dark:bg-gray-700 rounded" />
-            <Skeleton className="h-4 bg-gray-100  dark:bg-gray-800 rounded" />
+            <Skeleton className="h-3 w-[12ch] bg-gray-200  dark:bg-gray-700 rounded" />
+            <Skeleton className={cn("h-3 bg-gray-100  dark:bg-gray-800 rounded w-[30ch]")} />
           </div>
         </div>
       )}
 
     </div>
-    <div className="flex-1 p-2 px-3 flex justify-between">
+    <div className="flex-1 p-1 px-2 flex justify-between">
       <Skeleton className="w-[10ch] h-3 bg-gray-200  dark:bg-gray-700 rounded" />
-      <Skeleton className="w-[10ch] h-3 bg-gray-200  dark:bg-gray-700 rounded" />
+      {/* <Skeleton className="w-[10ch] h-3 bg-gray-200  dark:bg-gray-700 rounded" /> */}
     </div>
 
   </div>
 })
 
-const TEST_LOADING = true
 
 
 
 const GitHubButton = () => (
-  <Link passHref href="https://github.com/pratiqdev/srch">
+  <Link passHref href="https://github.com/pratiqdev/srch"  target="_blank">
 
   <Button
     variant="ghost"
@@ -68,7 +66,7 @@ const GitHubButton = () => (
 )
 
 const NpmButton = () => (
-  <Link passHref href="https://npmjs.org">
+  <Link passHref href="https://npmjs.org"  target="_blank">
     
   <Button
   disabled
@@ -85,7 +83,7 @@ const NpmButton = () => (
 )
 
 const UserButton = () => (
-  <Link passHref href="https://github.com/pratiqdev">
+  <Link passHref href="https://github.com/pratiqdev"  target="_blank">
 
   <Button
     variant="secondary"
@@ -127,7 +125,7 @@ export default function Home() {
              <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mb-[-.5rem] rounded px-2 w-min">v0.1.0</h1>
              <h1 className="text-5xl font-bold tracking-wide">srch</h1>
              <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-300 tracking-wide">
-               Drop-in, feature-rich, search for React
+               Drop-in, feature-rich, fuzzy search for React
              </p>
          
            </div>
@@ -145,10 +143,12 @@ export default function Home() {
 
          <div className="text-xs sm:text-lg text-gray-500 dark:text-gray-300 tracking-wide flex flex-col text-center items-center">
            <p className=" flex items-baseline font-medium">
-             Made with <HeartHandshake size='12' className="mx-1"/> and
+             Made with <Heart className="mx-1 text-sm h-4" /> and
            </p>
          <div className="flex gap-2 font-light py-1 tracking-wider">
-           shadcn-ui | radix-ui | cmdk | fuse.js | tailwindcss
+           <Link target="_blank" href="https://fusejs.io" className="hover:underline">fuse.js</Link> |
+           <Link target="_blank" href="https://ui.shadcn.com/" className="hover:underline">shadcn-ui</Link> | 
+           <Link target="_blank" href="https://tailwindcss.com/" className="hover:underline">tailwind</Link>
          </div>
            <p className=" flex items-baseline font-medium">
              by pratiqdev
@@ -187,6 +187,7 @@ import Srch, { useSrch } from 'srch'
         <div className="w-min">
           <UserButton />
         </div>
+          <small className="text-gray-500 text-sm w-full flex justify-center">Site inspired by{` `}<Link target="_blank" className="underline flex ml-1 items-center" href="https://cmdk.paco.me">cmdk.paco.me</Link></small>
       </section>
  
 
