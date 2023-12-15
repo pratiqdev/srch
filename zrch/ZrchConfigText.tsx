@@ -100,7 +100,6 @@ export function zrchConfigTest<T extends BaseRecord>({
   )
 }
 
-<zrchConfigTest />
 
 
 

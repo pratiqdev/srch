@@ -1,5 +1,5 @@
 "use client"
-import zrch, { usezrch } from '@/zrch/zrch'
+import Zrch, { useZrch } from '@/zrch/Zrch'
 import { commentData, albumData,  userData, customData } from '@/zrch/data/test-data'
 import { ItemRender, ListRender } from '@/zrch/customRender'
 import { Button } from './ui/button'
@@ -8,7 +8,7 @@ import * as LucideIcons from 'lucide-react'
 import pokeData from '../zrch/data/poke.json'
 
 const Control = () => {
-    const {toggleWindow} = usezrch()
+    const {toggleWindow} = useZrch()
     return <Button onClick={() => toggleWindow(true)}>Search</Button>
 }
 type WelcomeData = {
@@ -136,14 +136,14 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch',
-        text: 'Access and update internal state with helper methods provided in the `usezrch` hook',
+        title: 'useZrch',
+        text: 'Access and update internal state with helper methods provided in the `useZrch` hook',
         href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.value',
+        title: 'useZrch.value',
         type: 'string',
         text: 'The current state of the search input in the window or search-bar',
         href: '/use-zrch#getting-started'
@@ -151,7 +151,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.setValue',
+        title: 'useZrch.setValue',
         type: 'string',
         text: 'Set the state of the search input. Performs search on change.',
         href: '/use-zrch#getting-started'
@@ -159,7 +159,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.toggleWindow',
+        title: 'useZrch.toggleWindow',
         type: '(open?: boolean) => void',
         text: 'Toggle or set the isWindowOpen state',
         href: '/use-zrch#getting-started'
@@ -167,7 +167,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.setSearchable',
+        title: 'useZrch.setSearchable',
         type: '(data: any[]) => void',
         text: 'Set a new collection of searchable data. Useful for async loaded docs',
         href: '/use-zrch#getting-started'
@@ -175,7 +175,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.results',
+        title: 'useZrch.results',
         type: 'FuseResult<T>[]',
         text: 'Array of search results. Limited by config.resultsLength',
         href: '/use-zrch#getting-started'
@@ -183,7 +183,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.groupBy',
+        title: 'useZrch.groupBy',
         type: 'FuseResult<T>[]',
         text: 'Array of search results. Limited by config.resultsLength',
         href: '/use-zrch#getting-started'
@@ -191,7 +191,7 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'usezrch.groupBy',
+        title: 'useZrch.groupBy',
         type: '(groupBy: string) => void',
         text: 'Set the new grouping behavior. Updates the rendered results.',
         href: '/use-zrch#getting-started'
@@ -204,7 +204,7 @@ const Search = () => {
         <>
         <div id="blap" className="h-auto w-full flex justify-center items-center min-h-[20rem]">
             </div>
-        <zrch
+        <Zrch
             classNames={{
                     wrapper: 'rounded-xl z-50 shadow-2xl dark:border dark:border-gray-800',
                 list: 'min-h-[20rem]'

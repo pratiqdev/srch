@@ -95,7 +95,7 @@ const zrchCtx = createContext<BaseCtx<any>>({
 
 
 //! ========================================================================================================================
-export const usezrch = () => {
+export const useZrch = () => {
   const { ctx, setCtx, mergeCtx } = useContext(zrchCtx);
 
   const setValue = (value?: string) => {
@@ -171,7 +171,7 @@ export const zrchProvider = <T extends BaseRecord>({
       </div>
   },
   NoResultsComponent = () => {
-    const { value } = usezrch()
+    const { value } = useZrch()
     return <p>No results for <b className="tracking-wide">{value}</b></p>
   },
   FooterComponent = () => {
