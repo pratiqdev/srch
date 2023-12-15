@@ -159,9 +159,9 @@ export default function Home() {
 
       <section className="pt-[10vh]">
         <CodeBlock code={`
-import zrch, { usezrch } from 'zrch'
+import Zrch, { useZrch } from 'zrch'
 
-<zrch 
+<Zrch 
 
   // provide any data, consistency recommended
   searchable={[ ... ]}
