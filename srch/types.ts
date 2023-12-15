@@ -24,7 +24,7 @@ export type MetaConfig = {
     attributionText: ReactNode;
 }
 
-export type SrchCtx<T> = {
+export type zrchCtx<T> = {
 	searchValue: string;
 	searchResults: FuseResult<T>[];
     recommended: T[];
@@ -39,9 +39,9 @@ export type SrchCtx<T> = {
 }
 
 export type BaseCtx<T> = {
-	ctx: SrchCtx<T>;
-	setCtx: Dispatch<SetStateAction<SrchCtx<T>>>;
-	mergeCtx: (newCtx: Partial<SrchCtx<T>> | SetStateAction<Partial<SrchCtx<T>>>) => void;
+	ctx: zrchCtx<T>;
+	setCtx: Dispatch<SetStateAction<zrchCtx<T>>>;
+	mergeCtx: (newCtx: Partial<zrchCtx<T>> | SetStateAction<Partial<zrchCtx<T>>>) => void;
 }
 
 

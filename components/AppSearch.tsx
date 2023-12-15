@@ -1,14 +1,14 @@
 "use client"
-import Srch, { useSrch } from '@/srch/Srch'
-import { commentData, albumData,  userData, customData } from '@/srch/data/test-data'
-import { ItemRender, ListRender } from '@/srch/customRender'
+import zrch, { usezrch } from '@/zrch/zrch'
+import { commentData, albumData,  userData, customData } from '@/zrch/data/test-data'
+import { ItemRender, ListRender } from '@/zrch/customRender'
 import { Button } from './ui/button'
 import { useRef } from 'react'
 import * as LucideIcons from 'lucide-react'
-import pokeData from '../srch/data/poke.json'
+import pokeData from '../zrch/data/poke.json'
 
 const Control = () => {
-    const {toggleWindow} = useSrch()
+    const {toggleWindow} = usezrch()
     return <Button onClick={() => toggleWindow(true)}>Search</Button>
 }
 type WelcomeData = {
@@ -27,7 +27,7 @@ export const welcomeData:WelcomeData[] = [
         icon: 'TestTube',
         title: 'Beta Testing',
         text: 'Browse or create issues to contribute',
-        href: 'https://github.com/pratiqdev/srch'
+        href: 'https://github.com/pratiqdev/zrch'
     },
     //==========================================================================================
     //==========================================================================================
@@ -136,65 +136,65 @@ export const welcomeData:WelcomeData[] = [
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch',
-        text: 'Access and update internal state with helper methods provided in the `useSrch` hook',
-        href: '/use-srch#getting-started'
+        title: 'usezrch',
+        text: 'Access and update internal state with helper methods provided in the `usezrch` hook',
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.value',
+        title: 'usezrch.value',
         type: 'string',
         text: 'The current state of the search input in the window or search-bar',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.setValue',
+        title: 'usezrch.setValue',
         type: 'string',
         text: 'Set the state of the search input. Performs search on change.',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.toggleWindow',
+        title: 'usezrch.toggleWindow',
         type: '(open?: boolean) => void',
         text: 'Toggle or set the isWindowOpen state',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.setSearchable',
+        title: 'usezrch.setSearchable',
         type: '(data: any[]) => void',
         text: 'Set a new collection of searchable data. Useful for async loaded docs',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.results',
+        title: 'usezrch.results',
         type: 'FuseResult<T>[]',
         text: 'Array of search results. Limited by config.resultsLength',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.groupBy',
+        title: 'usezrch.groupBy',
         type: 'FuseResult<T>[]',
         text: 'Array of search results. Limited by config.resultsLength',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
     {
         section: 'Hooks',
         icon: 'Webhook',
-        title: 'useSrch.groupBy',
+        title: 'usezrch.groupBy',
         type: '(groupBy: string) => void',
         text: 'Set the new grouping behavior. Updates the rendered results.',
-        href: '/use-srch#getting-started'
+        href: '/use-zrch#getting-started'
     },
 ]
 
@@ -204,7 +204,7 @@ const Search = () => {
         <>
         <div id="blap" className="h-auto w-full flex justify-center items-center min-h-[20rem]">
             </div>
-        <Srch
+        <zrch
             classNames={{
                     wrapper: 'rounded-xl z-50 shadow-2xl dark:border dark:border-gray-800',
                 list: 'min-h-[20rem]'

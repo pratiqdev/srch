@@ -8,7 +8,7 @@ const context2 = React.createContext({})
  * 
  * @param {T[]} searchable - The array of content to search
  */
-export function SrchConfigTest<T extends BaseRecord>({
+export function zrchConfigTest<T extends BaseRecord>({
   // ============= SEARCH
   searchable = [],
   defaultValue,
@@ -73,8 +73,8 @@ export function SrchConfigTest<T extends BaseRecord>({
 
 
 }) {
-  // - ONLY provide the minimum required context for useSrch, the window exists in this provider and can use state directly
-  // - ALL values should be state driven to allow updating from useSrch
+  // - ONLY provide the minimum required context for usezrch, the window exists in this provider and can use state directly
+  // - ALL values should be state driven to allow updating from usezrch
   // - 
 
   const [_searchable, _setSearchable] = React.useState<T[]>(searchable ?? [])
@@ -100,7 +100,7 @@ export function SrchConfigTest<T extends BaseRecord>({
   )
 }
 
-<SrchConfigTest />
+<zrchConfigTest />
 
 
 

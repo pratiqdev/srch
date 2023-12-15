@@ -51,7 +51,7 @@ const AppSearch = dynamic(() => import('@/components/AppSearch'), {
 
 
 const GitHubButton = () => (
-  <Link passHref href="https://github.com/pratiqdev/srch"  target="_blank">
+  <Link passHref href="https://github.com/pratiqdev/zrch"  target="_blank">
 
   <Button
     variant="ghost"
@@ -60,7 +60,7 @@ const GitHubButton = () => (
     <div className="rounded-full bg-gray-600 text-gray-100 h-6 w-6 flex items-center justify-center text-center overflow-hidden p-1 group-hover:bg-gray-900  duration-200">
       <GithubIcon />
     </div>
-    pratiqdev/srch
+    pratiqdev/zrch
   </Button>
   </Link>
 )
@@ -74,7 +74,7 @@ const NpmButton = () => (
     className="relative w-min sm:w-full flex items-center gap-2 px-2 pl-4 group group-hover:line-through group-hover/linkbox:bg-red-500"
     >
     {/* <div className="absolute top-[-1.5rem] right-[-.5rem] group-hover:text-orange-500 group-hover:bounce duration-200">beta<ReplyIcon className="rotate-[20deg]  translate-x-5"/></div> */}
-    npm install srch
+    npm install zrch
     <div className="rounded-full bg-gray-200 text-gray-900 h-6 w-6 flex items-center justify-center text-center overflow-hidden p-1 bg-grey-300  group-hover:bg-gray-400 duration-200">
       <CopyIcon />
     </div>
@@ -123,7 +123,7 @@ export default function Home() {
          <div className="flex flex-col sm:flex-row items-center justify-between w-full">
            <div className="w-full">
              <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-1 px-2 w-min">v0.1.0</h1>
-             <h1 className="text-5xl font-bold tracking-wide blur animate-unblur">srch</h1>
+             <h1 className="text-5xl font-bold tracking-wide blur animate-unblur">zrch</h1>
              <div className="text-lg sm:text-xl text-gray-500 dark:text-gray-300 tracking-wide">
                Feature-rich <div className="blur animate-partial-unblur inline">fuzzy</div> search for React
              </div>
@@ -159,9 +159,9 @@ export default function Home() {
 
       <section className="pt-[10vh]">
         <CodeBlock code={`
-import Srch, { useSrch } from 'srch'
+import zrch, { usezrch } from 'zrch'
 
-<Srch 
+<zrch 
 
   // provide any data, consistency recommended
   searchable={[ ... ]}
@@ -216,7 +216,7 @@ import Srch, { useSrch } from 'srch'
 //         <div className="flex flex-col sm:flex-row items-center justify-between w-full px-6 pb-16">
 //           <div className="w-full">
 //             <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mb-[-.5rem] rounded px-2 w-min">v0.1.0</h1>
-//             <h1 className="text-5xl font-bold tracking-wide">srch</h1>
+//             <h1 className="text-5xl font-bold tracking-wide">zrch</h1>
 //             <p className="text-xl text-gray-500 dark:text-gray-300 tracking-wide">
 //               Drop-in, feature-rich, search for React
 //             </p>
@@ -247,9 +247,9 @@ import Srch, { useSrch } from 'srch'
 
 //       <section className="hidden h-0 sm:flex sm:h-auto w-full flex-col gap-24 items-center  justify-between sm:pt-0 overflow-hidden">
 //       <CodeBlock code={`
-// import Srch, { useSrch } from 'srch'
+// import zrch, { usezrch } from 'zrch'
 
-// <Srch 
+// <zrch 
 
 //   // provide any searchable data, consistency recommended
 //   searchable={[ ... ]}
