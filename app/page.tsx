@@ -122,7 +122,7 @@ export default function Home() {
       <section className="min-h-[90vh] pt-8">
          <div className="flex flex-col sm:flex-row items-center justify-between w-full">
            <div className="w-full">
-             <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-1 px-2 w-min">v0.1.0</h1>
+             <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-1 px-2 w-min">v0.0.1</h1>
              <h1 className="text-5xl font-bold tracking-wide blur animate-unblur">zrch</h1>
              <div className="text-lg sm:text-xl text-gray-500 dark:text-gray-300 tracking-wide">
                Feature-rich <div className="blur animate-partial-unblur inline">fuzzy</div> search for React

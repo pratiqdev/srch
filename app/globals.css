@@ -34,8 +34,8 @@ section {
 
 .spot {
     position: absolute;
-    width: 30rem;
-    height: 30rem;
+    width: 70rem;
+    height: 70rem;
     border-radius: 15rem;
     pointer-events: none;
     z-index: -1;
@@ -45,19 +45,19 @@ section {
 .spot-1 {
     /* blue*/
     background-image: radial-gradient(rgba(0, 106, 255, 0.1) 20%, #00f0 60%, #00f0);
-    transform: translate(-50%, 10%);
+    transform: translate(10rem, 5rem);
 }
 
 .spot-2 {
     /* purple*/
     background-image: radial-gradient(rgba(102, 0, 255, 0.1) 20%, #00f0 60%, #00f0);
-    transform: translate(40%, 20%);
+    transform: translate(-5rem, -10rem);
 }
 
 .spot-3 {
     /* red*/
     background-image: radial-gradient(rgba(255, 0, 68, 0.1) 20%, #00f0 60%, #00f0);
-    transform: translate(50%, 40%);
+    transform: translate(-10rem, 10rem);
 }
 
 .spot-4 {
