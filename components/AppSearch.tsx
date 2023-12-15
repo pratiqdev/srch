@@ -1,6 +1,6 @@
 "use client"
 import Srch, { useSrch } from '@/srch/Srch'
-import { commentData, albumData,  userData, customData } from '@/srch/test-data'
+import { commentData, albumData,  userData, customData } from '@/srch/data/test-data'
 import { ItemRender, ListRender } from '@/srch/customRender'
 import { Button } from './ui/button'
 import { useRef } from 'react'
