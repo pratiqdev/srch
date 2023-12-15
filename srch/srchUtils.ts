@@ -90,7 +90,8 @@ function getUniqueKeys(obj:any | any[], prefix:string = '') {
         // log('value is idk:', value)
         return '';
       }
-    }).join(' ').toLowerCase();
+    }).join(' ')
+    // .toLowerCase();
   };
   
   export const getUniqueSubstrings = (source:string, min:number = 3, max:number = 18): string[] => {

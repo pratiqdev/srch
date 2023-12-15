@@ -110,8 +110,8 @@ section {
 .simple-grid-light {
     background-size: 6px 6px;
     background-image:
-        linear-gradient(to right, #c6c6c608 1px, transparent 1px),
-        linear-gradient(to bottom, #c6c6c608 1px, transparent 1px);
+        linear-gradient(to right, #c6c6c603 1px, transparent 1px),
+        linear-gradient(to bottom, #c6c6c603 1px, transparent 1px);
 }
 
 
