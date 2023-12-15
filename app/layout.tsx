@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
-            "bg-white dark:bg-black font-sans antialiased simple-grid max-w-screen overflow-x-hidden",
+            "bg-white dark:bg-black font-sans antialiased simple-grid-light max-w-screen overflow-x-hidden",
             fontSans.variable
           )}
         >
@@ -35,7 +35,7 @@ export default function RootLayout({
             storageKey='srch_theme'
             enableColorScheme
             // disableTransitionOnChange
-          >
+            >
             {children}
           </ThemeProvider>
         </body>

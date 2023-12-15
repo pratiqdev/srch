@@ -1,5 +1,6 @@
 "use client";
 
+import { BaseRecord } from "./types";
 import React, {
   useState,
   useEffect,
@@ -38,6 +39,8 @@ import { useIsSSR } from "@react-aria/ssr";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "class-variance-authority/types";
+import { ClassNames } from "./types";
+
 
 const log = createDebug("srch");
 createDebug.disable()
@@ -87,15 +90,7 @@ const srchCtx = createContext<BaseCtx<any>>({
 
 
 
-type BaseRecord = Record<string| number | symbol, any>
-export type ClassNames = {
-  wrapper?: ClassValue;
-  input?: ClassValue;
-  list?: ClassValue;
-  item?: ClassValue;
-  footer?: ClassValue;
-  autocomplete?: ClassValue;
-}
+
 
 
 
@@ -180,14 +175,18 @@ export const SrchProvider = <T extends BaseRecord>({
     return <p>No results for <b className="tracking-wide">{value}</b></p>
   },
   FooterComponent = () => {
-    return <p className="text-gray-500">By /pratiqdev</p>
+    return <p className="text-gray-500 p-2 text-xs">By /pratiqdev</p>
   },
   RenderItem = ({ result, index }) => {
     return <div>{JSON.stringify(result)}</div>
   },
   RenderList, 
   classNames = {}
-}: { //===========================================
+}: { 
+  
+  
+  
+  //===========================================
   /** provider - array of strings, numbers or objects to search */
   searchable?: T[];
   recommended?: T[];
@@ -209,6 +208,13 @@ export const SrchProvider = <T extends BaseRecord>({
   RenderList?:  ({ results, value, onSelect }:{ results: FuseResult<T>[],  groupedResults: [string, FuseResult<T>[]][], value: string, onSelect: (value:any) => void }) => ReactNode;
   classNames?: ClassNames;
 }) => {
+
+
+
+
+
+
+
    //===========================================
   const [ctx, setCtx] = useState<SrchCtx<T>>({
     ...DEFAULT_CONTEXT,
@@ -218,7 +224,7 @@ export const SrchProvider = <T extends BaseRecord>({
     searchKeys,
   });
   const fuseRef = useRef<null | Fuse<T>>(null);
-  const keyFuseRef = useRef<null | Fuse<string>>(null);
+  // const keyFuseRef = useRef<null | Fuse<string>>(null);
   const autocompleteFuseRef = useRef<null | Fuse<string>>(null);
   const isSsr = useIsSSR()
   const Wrapper = useDialog ? CommandDialog : Command
@@ -324,12 +330,12 @@ export const SrchProvider = <T extends BaseRecord>({
       fuseConfig: { ...ctx.fuseConfig, keys: fuseKeys }
      });
 
-    keyFuseRef.current = new Fuse(probKeys, {
-        includeScore: true,
-        isCaseSensitive: false,
-        findAllMatches: true,
-        threshold: .5
-    })
+    // keyFuseRef.current = new Fuse(probKeys, {
+    //     includeScore: true,
+    //     isCaseSensitive: false,
+    //     findAllMatches: true,
+    //     threshold: .5
+    // })
     
     autocompleteFuseRef.current = new Fuse(uniqueStrings, {
       includeScore: true,
@@ -417,19 +423,19 @@ export const SrchProvider = <T extends BaseRecord>({
 
             {RenderList ? <RenderList results={ctx.searchResults} groupedResults={ctx.groupedResults} value={ctx.searchValue} onSelect={onSelect} /> : groupBy ? <GroupedResults /> : <Results />}
             {recommended?.length > 0 && 
-              <CommandGroup heading='Recommended'>
+              <CommandGroup heading='Recommended' 
+              // className={cn("", classNames.group)}
+              >
                 {recommended.map((rec, idx) => 
                  RenderItem &&
-                  <CommandItem key={idx} onSelect={() => onSelect({ item: rec, refIndex: 0 })}>
+                  <CommandItem key={idx} onSelect={() => onSelect({ item: rec, refIndex: 0 })} className={cn("", classNames.item)}>
                     <RenderItem result={{ item: rec, refIndex: 0 }} index={idx} />
                   </CommandItem>
                 )}
               </CommandGroup>
             }
             </CommandList>
-            {FooterComponent && <CommandItem disabled id="srch-footer"  className={cn("flex justify-between items-center text-xs", classNames.footer)}>
-              <FooterComponent />
-            </CommandItem>}
+            {FooterComponent && <FooterComponent />}
           </Wrapper>,
               ((document || window?.document) && typeof portalInto === 'string')
                 ? (document || window?.document)?.getElementById(portalInto) 
@@ -446,5 +452,7 @@ export const SrchProvider = <T extends BaseRecord>({
     </srchCtx.Provider>
   );
 };
+
+
 
 export default SrchProvider

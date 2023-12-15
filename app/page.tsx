@@ -66,7 +66,7 @@ const GitHubButton = () => (
 )
 
 const NpmButton = () => (
-  <Link passHref href="https://npmjs.org"  target="_blank">
+  <Link passHref href="https://npmjs.org"  target="_blank" className="pointer-events-none">
     
   <Button
   disabled
@@ -108,25 +108,25 @@ export default function Home() {
        <ThemeSwitch />
       </div>
 
-          <div className="spot spot-1"></div>
-          <div className="spot spot-2"></div>
-          <div className="spot spot-3"></div>
-          <div className="spot spot-4"></div>
-          <div className="spot spot-5"></div>
-          <div className="spot spot-6"></div>
-      <div className="spot spot-7"></div>
-      <div className="spot spot-8"></div>
-      <div className="spot spot-9"></div>
-      <div className="spot spot-10"></div>
+        <div className="spot spot-1"></div>
+        <div className="spot spot-2"></div>
+        <div className="spot spot-3"></div>
+        <div className="spot spot-4"></div>
+        <div className="spot spot-5"></div>
+        <div className="spot spot-6"></div>
+        <div className="spot spot-7"></div>
+        <div className="spot spot-8"></div>
+        <div className="spot spot-9"></div>
+        <div className="spot spot-10"></div>
 
-      <section className="min-h-[90vh]">
+      <section className="min-h-[90vh] pt-8">
          <div className="flex flex-col sm:flex-row items-center justify-between w-full">
            <div className="w-full">
-             <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 mb-[-.5rem] rounded px-2 w-min">v0.1.0</h1>
-             <h1 className="text-5xl font-bold tracking-wide">srch</h1>
-             <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-300 tracking-wide">
-               Drop-in, feature-rich, fuzzy search for React
-             </p>
+             <h1 className="text-sm tracking-wider bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-1 px-2 w-min">v0.1.0</h1>
+             <h1 className="text-5xl font-bold tracking-wide blur animate-unblur">srch</h1>
+             <div className="text-lg sm:text-xl text-gray-500 dark:text-gray-300 tracking-wide">
+               Feature-rich <div className="blur animate-partial-unblur inline">fuzzy</div> search for React
+             </div>
          
            </div>
            <div className="relative flex flex-row-reverse sm:flex-col pt-8 sm:pt-0 items-end gap-2 font-regular flex-wrap group group-linkbox">
@@ -141,7 +141,7 @@ export default function Home() {
            
     
 
-         <div className="text-xs sm:text-lg text-gray-500 dark:text-gray-300 tracking-wide flex flex-col text-center items-center">
+         <div className="text-xs sm:text-lg text-gray-500 dark:text-gray-300 tracking-wide flex flex-col text-center items-center blur animate-unblur">
            <p className=" flex items-baseline font-medium">
              Made with <Heart className="mx-1 text-sm h-4" /> and
            </p>

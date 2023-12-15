@@ -1,5 +1,6 @@
 import { Dispatch,  ReactNode,  SetStateAction } from "react";
 import { FuseOptionKey, FuseResult } from "fuse.js";
+import { ClassValue } from "clsx";
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export type FuseConfig = {
@@ -44,7 +45,15 @@ export type BaseCtx<T> = {
 }
 
 
-
+export type BaseRecord = Record<string| number | symbol, any>
+export type ClassNames = {
+  wrapper?: ClassValue;
+  input?: ClassValue;
+  list?: ClassValue;
+  item?: ClassValue;
+  footer?: ClassValue;
+  autocomplete?: ClassValue;
+}
 /*
 reusable search component:
 

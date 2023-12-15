@@ -5,6 +5,7 @@ import { ItemRender, ListRender } from '@/srch/customRender'
 import { Button } from './ui/button'
 import { useRef } from 'react'
 import * as LucideIcons from 'lucide-react'
+import pokeData from '../srch/data/poke.json'
 
 const Control = () => {
     const {toggleWindow} = useSrch()
